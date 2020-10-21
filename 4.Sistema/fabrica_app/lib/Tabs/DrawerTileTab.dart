@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 
 //TODO: refatorar e colocar padrões de projeto
 class DrawerTileTab extends StatelessWidget {
-  DrawerTileTab(this.icon, this.text);
+  DrawerTileTab(this.icon, this.text, this.pageController, this.page);
+
   final IconData icon;
   final String text;
+  final PageController pageController;
+  final int page;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
+        onTap: () {
+          Navigator.of(context).pop();
+          pageController.jumpToPage(page);
+        },
         child: Container(
             height: 60.0,
             child: Row(
@@ -18,12 +25,21 @@ class DrawerTileTab extends StatelessWidget {
                 Icon(
                   this.icon,
                   size: 32.0,
-                  color: Color.fromARGB(255, 255, 122, 0),
+                  color: pageController.page == page
+                      ? Color.fromARGB(255, 255, 122, 0)
+                      : Colors.white,
                 ),
-                SizedBox(width: 32.0,),
+                SizedBox(
+                  width: 32.0,
+                ),
                 Text(
                   this.text,
-                  style: TextStyle(fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      color:pageController.page == page
+                      ? Color.fromARGB(255, 255, 122, 0)
+                      : Colors.white,
+                      fontWeight: FontWeight.bold),
                 )
               ],
             )),

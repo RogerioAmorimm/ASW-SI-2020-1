@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: <Widget>[
         Scaffold(
           body: HomeTab(GlobalConst.HomeTitle, listColors: GlobalConst.ListOfColorsHome),
-          drawer: DrawerTab(),
+          drawer: DrawerTab(_pageController),
         )
         
       ],

@@ -1,4 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:frabicaapp/helpers/global_consts.dart';
+import 'package:frabicaapp/helpers/opcoes.dart';
+import 'package:transparent_image/transparent_image.dart';
 //dark mode
 
 class HomeTab extends StatelessWidget {
@@ -28,62 +33,50 @@ class HomeTab extends StatelessWidget {
       _bildBodyBack(),
       CustomScrollView(slivers: <Widget>[
         SliverAppBar(
-          //floating: true,
-          //snap: true,
+          floating: true,
+          snap: true,
           backgroundColor: Colors.transparent,
-          // elevation: 0.0,
-          expandedHeight: 400.0,
+          elevation: 0.0,
           flexibleSpace: FlexibleSpaceBar(
-            background: Container(
-                margin: EdgeInsets.all(20.0),
-                child: DecoratedBox(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage("images/logo.png"))))),
+            title: Text(_title),
+            centerTitle: true,
           ),
         ),
-        SliverToBoxAdapter(
-          child: FadeInImage.assetNetwork(placeholder: "images/grid.png", image: "images/grid.png", )                     
+        FutureBuilder<QuerySnapshot>(
+          future: Firestore.instance
+              .collection("home")
+              .orderBy("pos")
+              .getDocuments(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return SliverToBoxAdapter(
+                child: Container(
+                  height: 500.0,
+                  alignment: Alignment.center,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
+                ),
+              );
+            } else {
+              return SliverStaggeredGrid.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 1.0,
+                crossAxisSpacing: 1.0,
+                staggeredTiles: snapshot.data.documents.map((doc) {
+                  return StaggeredTile.count(doc.data["x"], doc.data["y"]);
+                }).toList(),
+                children: snapshot.data.documents.map((doc) {
+                  return FadeInImage.memoryNetwork(
+                      placeholder: kTransparentImage,
+                      image: doc.data["image"],
+                      fit: BoxFit.cover);
+                }).toList(),
+              );
+            }
+          },
         ),
-         SliverToBoxAdapter()
       ])
     ]);
   }
 }
-// //TODO: Refatorar essa parte do code para melhor aproveitamento
-//             FutureBuilder<QuerySnapshot>(
-//               future: Firestore.instance
-//                   .collection("home")
-//                   .orderBy("pos")
-//                   .getDocuments(),
-//               builder: (context, snapshot) {
-//                 if (!snapshot.hasData) {
-//                   return SliverToBoxAdapter(
-//                     child: Container(
-//                       height: 500.0,
-//                       alignment: Alignment.center,
-//                       child: CircularProgressIndicator(
-//                         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-//                       ),
-//                     ),
-//                   );
-//                 } else {
-//                   return SliverStaggeredGrid.count(
-//                     crossAxisCount: 2,
-//                     mainAxisSpacing: 1.0,
-//                     crossAxisSpacing: 1.0,
-//                     staggeredTiles: snapshot.data.documents.map((doc) {
-//                       return StaggeredTile.count(doc.data["x"], doc.data["y"]);
-//                     }).toList(),
-//                     children: snapshot.data.documents.map((doc) {
-//                       return FadeInImage.memoryNetwork(
-//                           placeholder: kTransparentImage,
-//                           image: doc.data["image"],
-//                           fit: BoxFit.cover);
-//                     }).toList(),
-//                   );
-//                 }
-//               },
-//             )
-//           ],
-//         )

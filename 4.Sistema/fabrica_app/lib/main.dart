@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frabicaapp/helpers/global_consts.dart';
-import 'package:frabicaapp/screns/home_scren.dart';
+import 'package:frabicaapp/screns/logim_screen.dart';
 
 
 void main() => runApp(new Myapp());
@@ -15,7 +15,7 @@ void main() => runApp(new Myapp());
          primaryColor: GlobalConst.PrimaryColor
        ),
        debugShowCheckedModeBanner: false ,
-       home: HomeScreen(),
+       home: LogimScreen(),
      );
    }
  }
