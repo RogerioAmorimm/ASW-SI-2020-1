@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:frabicaapp/helpers/global_consts.dart';
-import 'package:frabicaapp/helpers/opcoes.dart';
+import 'package:frabicaapp/Tabs/Drawer_tab.dart';
 import 'package:transparent_image/transparent_image.dart';
 //dark mode
 
 class HomeTab extends StatelessWidget {
-  HomeTab(String title, {List<Color> listColors}) {
+  HomeTab(String title, {List<Color> listColors, PageController pageControl}) {
     _title = title;
     _listColors = listColors;
+    _pageControl = pageControl;
   }
 
   String _title;
   List<Color> _listColors;
+  PageController _pageControl;
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildBodyHomeTab() {
     Widget _bildBodyBack() => Container(
             decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -78,5 +78,14 @@ class HomeTab extends StatelessWidget {
         ),
       ])
     ]);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+ 
+    return Scaffold(
+      body: _buildBodyHomeTab(),
+      drawer: DrawerTab(_pageControl),
+    );
   }
 }

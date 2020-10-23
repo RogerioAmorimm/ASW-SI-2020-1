@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frabicaapp/Tabs/DrawerTileTab.dart';
-import 'package:frabicaapp/helpers/global_consts.dart';
 
 //TODO: refatorar e colocar padrões de projeto
 class DrawerTab extends StatelessWidget {
@@ -70,12 +69,11 @@ class DrawerTab extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(),
-        
+            //TODO:arrumar o DrawerTileTab
+            Divider(), 
             DrawerTileTab(Icons.home, "Inicio", this.pageController, 0),
             DrawerTileTab(Icons.list, "Produtos",this.pageController, 1),
             DrawerTileTab(Icons.playlist_add_check, "Meus Pedidos",this.pageController, 2),
-
           ],
         ),
       ],
