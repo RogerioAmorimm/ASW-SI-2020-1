@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frabicaapp/helpers/opcoes.dart' ;
 
 //TODO: LEVA TODAS AS VARIAVES DE USO COMUM E PERSONALISAÇÃO, COMO CORES DE TEMAS, ANGULOS, MEDIDAS E ETC. CENTRALIZAR TAIS TIPO PARA DIMINUIR IMPACTOS NA ARQUITETURA.
+//TODO: QUEBRAR EM ARQUIVOS POR CONCEITO
+
 class GlobalConst {
   //constant public themes
   static const PrimarySwatch = Colors.blue;
@@ -26,6 +29,7 @@ class GlobalConst {
    const Opcao(title: 'Conta', icon: Icons.account_circle),
  ]; 
 
-
+ //constant category
+static const  CategoryTitle = "title";
  
 }
