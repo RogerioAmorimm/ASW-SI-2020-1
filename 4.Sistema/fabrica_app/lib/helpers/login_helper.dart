@@ -78,7 +78,9 @@ class LoginHelper extends Model {
     _loadIn(false);
   }
 
-  void recoverPass() {}
+  void recoverPass(String email) {
+    this._auth.sendPasswordResetEmail(email: email);
+  }
 
   bool isLoggedIn() {
     return this.user != null;
