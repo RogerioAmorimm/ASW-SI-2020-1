@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Residencia>
+	<endereco>
+		Endereço aqui
+	</endereco>
+	<dataDisponibilidade>
+		Data de disponibilidade aqui
+	</dataDisponibilidade>
+	<preco>
+		Preço aqui
+	</preco>
+	<VerificarDisponibilidade>
+	</VerificarDisponibilidade>
+</Residencia>

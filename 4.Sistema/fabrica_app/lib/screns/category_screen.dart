@@ -65,7 +65,7 @@ class CategoryScreen extends StatelessWidget {
                           itemCount: snapshot.data.documents.length,
                           itemBuilder: (context, index) {
                             return ProductTile(
-                                "grid",
+                                "list",
                                 ProductData.fromDocument(
                                     snapshot.data.documents[index]));
                           }),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:frabicaapp/Tabs/Drawer_tab.dart';
 import 'package:transparent_image/transparent_image.dart';
-//dark mode
+
 
 class HomeTab extends StatelessWidget {
   HomeTab(String title, {List<Color> listColors, PageController pageControl}) {

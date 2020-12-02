@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Cliente>
+	<nome>
+		Nome aqui
+	</nome>
+	<dataNascimento>
+		Data nascimento aqui 
+	</dataNascimento>
+	<endereco>
+		Endereço aqui
+	</endereco>
+	<AlugarCasa>
+	</AlugarCasa>
+	<MeusPedidos>
+	</MeusPedidos>
+</Cliente>

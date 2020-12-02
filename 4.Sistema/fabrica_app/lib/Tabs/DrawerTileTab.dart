@@ -11,6 +11,8 @@ class DrawerTileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Theme.of(context).accentColor;
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -26,7 +28,7 @@ class DrawerTileTab extends StatelessWidget {
                   this.icon,
                   size: 32.0,
                   color: pageController.page == page
-                      ? Color.fromARGB(255, 255, 122, 0)
+                      ? primaryColor
                       : Colors.white,
                 ),
                 SizedBox(
@@ -37,7 +39,7 @@ class DrawerTileTab extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 18.0,
                       color:pageController.page == page
-                      ? Color.fromARGB(255, 255, 122, 0)
+                      ? primaryColor
                       : Colors.white,
                       fontWeight: FontWeight.bold),
                 )

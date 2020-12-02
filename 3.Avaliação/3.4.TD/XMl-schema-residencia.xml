@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3schools.com" xmlns="http://www.w3schools.com" elementFormDefault="qualified">
+	<element name="Residencia">
+		<complexType>
+			<sequence>
+				<element name="endereco" type="xs:string" />
+				<element name="dataDisponibilidade" type="xs:date" />
+				<element name="preco" type="xs:double" />
+			</sequence>
+			<element name="VerificarDisponibilidade">
+			</element>
+		</complexType>
+	</element>
+</schema>
